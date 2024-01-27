@@ -20,10 +20,10 @@ struct NoteView: View {
 		if let note = note {
 			Form {
 				updateTextForNote(note)
-				Text(note.topic.title)
+				Text("Topic: \(note.topic.title)")
 					.font(.title3)
 				TextField("Title", text: $title)
-				TextField("Text", text: $text)
+				TextField("Text", text: $text, axis: .vertical)
 					.frame(minWidth: 300)
 					.lineLimit(5...25)
 				Button("Save") {
@@ -32,24 +32,19 @@ struct NoteView: View {
 					}
 				}
 			}
+			.padding()
 		} else {
 			VStack {
 				Text("No Current Note")
 				updateTextForNote(note)
 			}
 		}
-//		.onAppear {
-//			if let note {
-//				// Edit the incoming note.
-//				title = note.title
-//				text = note.text
-//			}
-//		}
 	}
 	private func save() {
 		guard let note = note else { return }
 		note.title = title
 		note.text = text
+		note.modificationDate = Date()
 	}
 	
 	private func updateTextForNote(_ note: Note?) -> some View {

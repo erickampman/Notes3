@@ -21,16 +21,18 @@ struct TopicListView: View {
 			ListTopics(topics: topics)
 			
 		}
-		.sheet(isPresented: $showAddTopic, content: {
-			AddTopicView()
-				.presentationDetents([.medium])
-		})
 		.toolbar {
 			ToolbarItem(placement: .principal) {
 				Button(action: {
-					showAddTopic.toggle()
+					do {
+						try modelContext.delete(model: Topic.self)
+						try modelContext.delete(model: Note.self)
+					}
+					catch {
+						print("clear error")
+					}
 				}, label: {
-					Text("New Topic")
+					Image(systemName: "minus")
 				})
 			}
 		}
@@ -47,18 +49,16 @@ struct TopicListView: View {
 				})
 			}
 		}
+		.sheet(isPresented: $showAddTopic, content: {
+			AddTopicView()
+				.presentationDetents([.medium])
+		})
 		.toolbar {
 			ToolbarItem(placement: .principal) {
 				Button(action: {
-					do {
-						try modelContext.delete(model: Topic.self)
-						try modelContext.delete(model: Note.self)
-					}
-					catch {
-						print("clear error")
-					}
+					showAddTopic.toggle()
 				}, label: {
-					Image(systemName: "minus")
+					Text("New Topic")
 				})
 			}
 		}
