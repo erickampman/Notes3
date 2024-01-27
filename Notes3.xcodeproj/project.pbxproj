@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E4A100002B65756700526B23 /* NoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4A1FFFF2B65756700526B23 /* NoteView.swift */; };
 		E4A1FFC52B6462EE00526B23 /* Notes3App.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4A1FFC42B6462EE00526B23 /* Notes3App.swift */; };
 		E4A1FFC72B6462EE00526B23 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4A1FFC62B6462EE00526B23 /* ContentView.swift */; };
 		E4A1FFC92B6462EF00526B23 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E4A1FFC82B6462EF00526B23 /* Assets.xcassets */; };
@@ -14,6 +15,14 @@
 		E4A1FFD62B6462EF00526B23 /* Notes3Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4A1FFD52B6462EF00526B23 /* Notes3Tests.swift */; };
 		E4A1FFE02B6462EF00526B23 /* Notes3UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4A1FFDF2B6462EF00526B23 /* Notes3UITests.swift */; };
 		E4A1FFE22B6462EF00526B23 /* Notes3UITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4A1FFE12B6462EF00526B23 /* Notes3UITestsLaunchTests.swift */; };
+		E4A1FFEF2B64633100526B23 /* ThreeColumnContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4A1FFEE2B64633100526B23 /* ThreeColumnContentView.swift */; };
+		E4A1FFF22B64638100526B23 /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4A1FFF12B64638100526B23 /* Note.swift */; };
+		E4A1FFF42B64782700526B23 /* NavigationContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4A1FFF32B64782700526B23 /* NavigationContext.swift */; };
+		E4A1FFF62B647A2900526B23 /* TopicListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4A1FFF52B647A2900526B23 /* TopicListView.swift */; };
+		E4A1FFF82B647EF700526B23 /* NotesSampleData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4A1FFF72B647EF700526B23 /* NotesSampleData.swift */; };
+		E4A1FFFA2B6546C300526B23 /* AddTopicView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4A1FFF92B6546C300526B23 /* AddTopicView.swift */; };
+		E4A1FFFC2B6550AF00526B23 /* AddNoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4A1FFFB2B6550AF00526B23 /* AddNoteView.swift */; };
+		E4A1FFFE2B6568F400526B23 /* NoteListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4A1FFFD2B6568F400526B23 /* NoteListView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +53,15 @@
 		E4A1FFDB2B6462EF00526B23 /* Notes3UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Notes3UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4A1FFDF2B6462EF00526B23 /* Notes3UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notes3UITests.swift; sourceTree = "<group>"; };
 		E4A1FFE12B6462EF00526B23 /* Notes3UITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notes3UITestsLaunchTests.swift; sourceTree = "<group>"; };
+		E4A1FFEE2B64633100526B23 /* ThreeColumnContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThreeColumnContentView.swift; sourceTree = "<group>"; };
+		E4A1FFF12B64638100526B23 /* Note.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = "<group>"; };
+		E4A1FFF32B64782700526B23 /* NavigationContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationContext.swift; sourceTree = "<group>"; };
+		E4A1FFF52B647A2900526B23 /* TopicListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopicListView.swift; sourceTree = "<group>"; };
+		E4A1FFF72B647EF700526B23 /* NotesSampleData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesSampleData.swift; sourceTree = "<group>"; };
+		E4A1FFF92B6546C300526B23 /* AddTopicView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTopicView.swift; sourceTree = "<group>"; };
+		E4A1FFFB2B6550AF00526B23 /* AddNoteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNoteView.swift; sourceTree = "<group>"; };
+		E4A1FFFD2B6568F400526B23 /* NoteListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteListView.swift; sourceTree = "<group>"; };
+		E4A1FFFF2B65756700526B23 /* NoteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,7 +113,14 @@
 			isa = PBXGroup;
 			children = (
 				E4A1FFC42B6462EE00526B23 /* Notes3App.swift */,
+				E4A1FFF02B64636800526B23 /* Data */,
 				E4A1FFC62B6462EE00526B23 /* ContentView.swift */,
+				E4A1FFEE2B64633100526B23 /* ThreeColumnContentView.swift */,
+				E4A1FFF52B647A2900526B23 /* TopicListView.swift */,
+				E4A1FFF92B6546C300526B23 /* AddTopicView.swift */,
+				E4A1FFFD2B6568F400526B23 /* NoteListView.swift */,
+				E4A1FFFB2B6550AF00526B23 /* AddNoteView.swift */,
+				E4A1FFFF2B65756700526B23 /* NoteView.swift */,
 				E4A1FFC82B6462EF00526B23 /* Assets.xcassets */,
 				E4A1FFCA2B6462EF00526B23 /* Preview Content */,
 			);
@@ -125,6 +150,16 @@
 				E4A1FFE12B6462EF00526B23 /* Notes3UITestsLaunchTests.swift */,
 			);
 			path = Notes3UITests;
+			sourceTree = "<group>";
+		};
+		E4A1FFF02B64636800526B23 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				E4A1FFF12B64638100526B23 /* Note.swift */,
+				E4A1FFF32B64782700526B23 /* NavigationContext.swift */,
+				E4A1FFF72B647EF700526B23 /* NotesSampleData.swift */,
+			);
+			path = Data;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -257,8 +292,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E4A1FFFA2B6546C300526B23 /* AddTopicView.swift in Sources */,
+				E4A1FFEF2B64633100526B23 /* ThreeColumnContentView.swift in Sources */,
+				E4A1FFFE2B6568F400526B23 /* NoteListView.swift in Sources */,
+				E4A1FFF42B64782700526B23 /* NavigationContext.swift in Sources */,
+				E4A100002B65756700526B23 /* NoteView.swift in Sources */,
+				E4A1FFF62B647A2900526B23 /* TopicListView.swift in Sources */,
 				E4A1FFC72B6462EE00526B23 /* ContentView.swift in Sources */,
 				E4A1FFC52B6462EE00526B23 /* Notes3App.swift in Sources */,
+				E4A1FFFC2B6550AF00526B23 /* AddNoteView.swift in Sources */,
+				E4A1FFF82B647EF700526B23 /* NotesSampleData.swift in Sources */,
+				E4A1FFF22B64638100526B23 /* Note.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -437,6 +481,8 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.unlikelyware.Notes3;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -466,6 +512,8 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.unlikelyware.Notes3;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
