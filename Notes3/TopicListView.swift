@@ -19,6 +19,7 @@ struct TopicListView: View {
 		@Bindable var navigationContext = navigationContext
 		List(selection: $navigationContext.selectedTopicTitle) {
 			ListTopics(topics: topics)
+			
 		}
 		.sheet(isPresented: $showAddTopic, content: {
 			AddTopicView()

@@ -40,7 +40,6 @@ struct NoteListView: View {
 				}
 			}
 		}
-		.navigationTitle("Note Selection")
     }
 }
 

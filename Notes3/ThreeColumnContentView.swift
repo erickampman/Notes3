@@ -11,26 +11,36 @@ struct ThreeColumnContentView: View {
 	@Environment(\.modelContext) private var modelContext
 	@Environment(NavigationContext.self) private var navigationContext
 	@State var columnVisibility: NavigationSplitViewVisibility = .all
+	@State var prevTopicTitle: String?
 
     var body: some View {
 		NavigationSplitView(columnVisibility: $columnVisibility) {
 //			Text("Topics")
 			TopicListView()
 		} content: {
-			if let selectedTopicTitle = navigationContext.selectedTopicTitle {
-				NoteListView(topicTitle: selectedTopicTitle)
-			} else {
-				Text("Select Topic")
+			ZStack {
+				if let selectedTopicTitle = navigationContext.selectedTopicTitle {
+					NoteListView(topicTitle: selectedTopicTitle)
+				} else {
+					Text("Select Topic")
+				}
+				updateSelectionInfo(navigationContext.selectedTopicTitle)
 			}
 		} detail: {
-			if let selectedNote = navigationContext.selectedNote {
-				NoteView(note: selectedNote)
-			} else {
-				Text("NoteDetail")
+			NoteView(note: navigationContext.selectedNote)
+		}
+    }
+	
+	private func updateSelectionInfo(_ topicTitle: String?) -> some View {
+		if prevTopicTitle != topicTitle {
+			DispatchQueue.main.async {
+				navigationContext.selectedNote = nil
+				prevTopicTitle = topicTitle
 			}
 		}
+		return EmptyView()
+	}
 
-    }
 }
 
 //#Preview {
