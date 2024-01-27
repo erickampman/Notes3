@@ -46,6 +46,21 @@ struct TopicListView: View {
 				})
 			}
 		}
+		.toolbar {
+			ToolbarItem(placement: .principal) {
+				Button(action: {
+					do {
+						try modelContext.delete(model: Topic.self)
+						try modelContext.delete(model: Note.self)
+					}
+					catch {
+						print("clear error")
+					}
+				}, label: {
+					Image(systemName: "minus")
+				})
+			}
+		}
 		.task {
 			if topics.isEmpty {
 				Topic.insertSampleData(modelContext: modelContext)

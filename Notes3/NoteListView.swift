@@ -30,11 +30,12 @@ struct NoteListView: View {
 			if notes.isEmpty {
 				Text("Add Notes")
 			} else {
-				List(selection: $navigationContext.selectedNoteTitle) {
+				List(selection: $navigationContext.selectedNote) {
 					ForEach(notes) { note in
-						NavigationLink(destination: NoteView(noteTitle: note.title)) {
-							Text(note.title)
-						}
+						NavigationLink(note.title, value: note)
+//						NavigationLink(destination: NoteView(note: note)) {
+//							Text(note.title)
+//						}
 					}
 				}
 			}

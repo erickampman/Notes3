@@ -23,8 +23,8 @@ struct ThreeColumnContentView: View {
 				Text("Select Topic")
 			}
 		} detail: {
-			if let selectedNoteTitle = navigationContext.selectedNoteTitle {
-				NoteListView(topicTitle: selectedNoteTitle)
+			if let selectedNote = navigationContext.selectedNote {
+				NoteView(note: selectedNote)
 			} else {
 				Text("NoteDetail")
 			}

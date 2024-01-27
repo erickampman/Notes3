@@ -10,12 +10,12 @@ import SwiftUI
 @Observable
 class NavigationContext {
 	var selectedTopicTitle: String?
-	var selectedNoteTitle: String?
+	var selectedNote: Note?
 	var columnVisibility: NavigationSplitViewVisibility
 	
-	init(selectedTopicTitle: String? = nil, selectedNoteTitle: String? = nil, columnVisibility: NavigationSplitViewVisibility  = .automatic) {
+	init(selectedTopicTitle: String? = nil, selectedNote: Note? = nil, columnVisibility: NavigationSplitViewVisibility  = .automatic) {
 		self.selectedTopicTitle = selectedTopicTitle
-		self.selectedNoteTitle = selectedNoteTitle
+		self.selectedNote = selectedNote
 		self.columnVisibility = columnVisibility
 	}
 }

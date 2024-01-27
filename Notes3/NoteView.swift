@@ -8,15 +8,55 @@
 import SwiftUI
 
 struct NoteView: View {
-	var noteTitle: String?
+	var note: Note?
 	@Environment(NavigationContext.self) private var navigationContext
 	@Environment(\.modelContext) private var modelContext
 
-    var body: some View {
-		Text(noteTitle ?? "")
-    }
+	@State private var title = ""
+	@State private var text = ""
+	@State private var prevNote: Note?
+
+	var body: some View {
+		Form {
+			updateTextForNote(note!)
+			Text(note?.topic.title ?? "")
+				.font(.title3)
+			TextField("Title", text: $title)
+			TextField("Text", text: $text)
+				.frame(minWidth: 300)
+				.lineLimit(5...25)
+			Button("Save") {
+				withAnimation {
+					save()
+				}
+			}
+		}
+//		.onAppear {
+//			if let note {
+//				// Edit the incoming note.
+//				title = note.title
+//				text = note.text
+//			}
+//		}
+	}
+	private func save() {
+		guard let note = note else { return }
+		note.title = title
+		note.text = text
+	}
+	
+	private func updateTextForNote(_ note: Note) -> some View {
+		if prevNote != note {
+			DispatchQueue.main.async {
+				title = note.title
+				text = note.text
+				prevNote = note
+			}
+		}
+		return EmptyView()
+	}
 }
 
 #Preview {
-	NoteView(noteTitle: "foo")
+	NoteView(note: Note(title: "foo", text: "bar", topic: Topic(title: "title")))
 }
