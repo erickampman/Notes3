@@ -24,26 +24,35 @@ struct ThreeColumnContentView: View {
 		} content: {
 			ZStack {
 				if let selectedTopicTitle = navigationContext.selectedTopicTitle {
-					NoteListView(topicTitle: selectedTopicTitle)
+					NoteListView(topicTitle: selectedTopicTitle, noteSortOrder: noteSortOrder)
 				} else {
 					Text("Select Topic")
 				}
-				updateSelectionInfo(navigationContext.selectedTopicTitle)
 			}
 		} detail: {
 			NoteView(note: navigationContext.selectedNote)
 		}
-    }
-	
-	private func updateSelectionInfo(_ topicTitle: String?) -> some View {
-		if prevTopicTitle != topicTitle {
-			DispatchQueue.main.async {
-				navigationContext.selectedNote = nil
-				prevTopicTitle = topicTitle
+		.toolbar {
+			ToolbarItem {
+				Picker("Sort", selection: $noteSortOrder) {
+					Text("Sort by Title")
+						.tag([
+							SortDescriptor(\Note.title),
+							SortDescriptor(\Note.modificationDate, order: .reverse),
+						])
+					
+					Text("Sort by Date")
+						.tag([
+							SortDescriptor(\Note.modificationDate, order: .reverse),
+							SortDescriptor(\Note.title),
+						])
+				}
 			}
 		}
-		return EmptyView()
-	}
+		.onChange(of: navigationContext.selectedTopicTitle, initial: true) {
+			navigationContext.selectedNote = nil
+		}
+    }
 
 }
 

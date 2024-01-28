@@ -19,7 +19,6 @@ struct NoteView: View {
 	var body: some View {
 		if let note = note {
 			Form {
-				updateTextForNote(note)
 				Text("Topic: \(note.topic.title)")
 					.font(.title3)
 				TextField("Title", text: $title)
@@ -33,10 +32,16 @@ struct NoteView: View {
 				}
 			}
 			.padding()
+			.onChange(of: navigationContext.selectedNote, initial: true) { onote, nnote in
+				updateTextForNote(nnote)
+			}
 		} else {
 			VStack {
 				Text("No Current Note")
-				updateTextForNote(note)
+				Text(navigationContext.selectedNote?.title ?? "None")
+			}
+			.onChange(of: navigationContext.selectedNote, initial: true) { onote, nnote in
+				updateTextForNote(nnote)
 			}
 		}
 	}
@@ -47,22 +52,17 @@ struct NoteView: View {
 		note.modificationDate = Date()
 	}
 	
-	private func updateTextForNote(_ note: Note?) -> some View {
-		if prevNote != note {
-			DispatchQueue.main.async {
-				if let note = note {
-					title = note.title
-					text = note.text
-					prevNote = note
-				} else {
-					title = ""
-					text = ""
-					prevNote = nil
-
-				}
-			}
+	private func updateTextForNote(_ note: Note?) {
+		if let note = note {
+			title = note.title
+			text = note.text
+			prevNote = note
+		} else {
+			title = ""
+			text = ""
+			prevNote = nil
+			
 		}
-		return EmptyView()
 	}
 }
 

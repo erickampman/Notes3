@@ -17,20 +17,21 @@ struct NoteListView: View {
 	@Environment(NavigationContext.self) private var navigationContext
 	@Environment(\.modelContext) var modelContext
 	@State var showAddNote = false
+	var noteSortOrder: [SortDescriptor<Note>]
 
-	@State private var noteSortOrder = SortBy.title
 	@State private var sortedNotes = [Note]()
 
 	var topicTitle: String
 
 	@Query(sort: \Note.title) private var notes: [Note]
-
-	init(topicTitle: String) {
+	
+	init(topicTitle: String, noteSortOrder: [SortDescriptor<Note>]) {
+		self.noteSortOrder = noteSortOrder
 		self.topicTitle = topicTitle
 		let predicate = #Predicate<Note> { note in
 			note.topic.title == topicTitle
 		}
-		_notes = Query(filter: predicate, sort: \.title)
+		_notes = Query(filter: predicate, sort: noteSortOrder)
 	}
 
 	var body: some View {
@@ -39,13 +40,9 @@ struct NoteListView: View {
 			if notes.isEmpty {
 				Text("Add Notes")
 			} else {
-				updateSortInfo()
 				List(selection: $navigationContext.selectedNote) {
-					ForEach(sortedNotes) { note in
+					ForEach(notes) { note in
 						NavigationLink(note.title, value: note)
-//						NavigationLink(destination: NoteView(note: note)) {
-//							Text(note.title)
-//						}
 					}
 				}
 			}
@@ -62,37 +59,10 @@ struct NoteListView: View {
 					Text("New Note")
 				})
 			}
-			ToolbarItem {
-				Picker("Sort Notes", selection: $noteSortOrder) {
-					Text("Title")
-						.tag(SortBy.title)
-					Text("Date")
-						.tag(SortBy.date)
-				}
-			}
 		}
     }
-	
-	/*
-		This is kind of screwy but you can't change the sort
-		order of a query after init()
-	 */
-	private func updateSortInfo() -> some View {
-		DispatchQueue.main.async {
-			sortedNotes = self.notes.sorted { a, b in
-				switch (self.noteSortOrder) {
-				case .title:
-					a.title < b.title
-				case .date:
-					a.modificationDate > b.modificationDate
-				}
-			}
-		}
-		return EmptyView()
-	}
-
 }
 
 #Preview {
-    NoteListView(topicTitle: "Foobar")
+    NoteListView(topicTitle: "Foobar", noteSortOrder: [SortDescriptor(\Note.title)])
 }

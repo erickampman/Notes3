@@ -13,7 +13,8 @@ struct TopicListView: View {
 	@Environment(\.modelContext) private var modelContext
 	@Query(sort: \Topic.title) private var topics: [Topic]
 	@State var showAddTopic = false
-
+//	@Binding var noteSortOrder: [SortDescriptor<Note>]
+	
     var body: some View {
 		@Bindable var navigationContext = navigationContext
 		List(selection: $navigationContext.selectedTopicTitle) {
