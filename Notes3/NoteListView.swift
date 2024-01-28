@@ -73,6 +73,10 @@ struct NoteListView: View {
 		}
     }
 	
+	/*
+		This is kind of screwy but you can't change the sort
+		order of a query after init()
+	 */
 	private func updateSortInfo() -> some View {
 		DispatchQueue.main.async {
 			sortedNotes = self.notes.sorted { a, b in
