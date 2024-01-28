@@ -18,9 +18,11 @@ struct TopicListView: View {
     var body: some View {
 		@Bindable var navigationContext = navigationContext
 		List(selection: $navigationContext.selectedTopicTitle) {
-			ListTopics(topics: topics)
-			
+			ForEach(topics) { topic in
+				NavigationLink(topic.title, value: topic.title)
+			}
 		}
+		#if false  /* enable to clear out the data */
 		.toolbar {
 			ToolbarItem(placement: .principal) {
 				Button(action: {
@@ -36,6 +38,7 @@ struct TopicListView: View {
 				})
 			}
 		}
+		#endif
 		.sheet(isPresented: $showAddTopic, content: {
 			AddTopicView()
 				.presentationDetents([.medium])
@@ -55,16 +58,6 @@ struct TopicListView: View {
 			}
 		}
     }
-}
-
-private struct ListTopics: View {
-	var topics: [Topic]
-	
-	var body: some View {
-		ForEach(topics) { topic in
-			NavigationLink(topic.title, value: topic.title)
-		}
-	}
 }
 
 //#Preview {

@@ -38,7 +38,6 @@ struct NoteView: View {
 		} else {
 			VStack {
 				Text("No Current Note")
-				Text(navigationContext.selectedNote?.title ?? "None")
 			}
 			.onChange(of: navigationContext.selectedNote, initial: true) { onote, nnote in
 				updateTextForNote(nnote)

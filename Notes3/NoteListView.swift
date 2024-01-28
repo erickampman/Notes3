@@ -44,6 +44,7 @@ struct NoteListView: View {
 					ForEach(notes) { note in
 						NavigationLink(note.title, value: note)
 					}
+					.onDelete(perform: removeNotes)
 				}
 			}
 		}
@@ -61,6 +62,16 @@ struct NoteListView: View {
 			}
 		}
     }
+	
+	private func removeNotes(at indexSet: IndexSet) {
+		for index in indexSet {
+			let noteToDelete = notes[index]
+			if navigationContext.selectedNote?.persistentModelID == noteToDelete.persistentModelID {
+				navigationContext.selectedNote = nil
+			}
+			modelContext.delete(noteToDelete)
+		}
+	}
 }
 
 #Preview {
