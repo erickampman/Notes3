@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E46924D62B670B6B00B735A2 /* Readme.md in Resources */ = {isa = PBXBuildFile; fileRef = E46924D52B670B6B00B735A2 /* Readme.md */; };
 		E4A100002B65756700526B23 /* NoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4A1FFFF2B65756700526B23 /* NoteView.swift */; };
 		E4A1FFC52B6462EE00526B23 /* Notes3App.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4A1FFC42B6462EE00526B23 /* Notes3App.swift */; };
 		E4A1FFC72B6462EE00526B23 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4A1FFC62B6462EE00526B23 /* ContentView.swift */; };
@@ -43,6 +44,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		E46924D52B670B6B00B735A2 /* Readme.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Readme.md; sourceTree = "<group>"; };
 		E4A1FFC12B6462EE00526B23 /* Notes3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Notes3.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4A1FFC42B6462EE00526B23 /* Notes3App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notes3App.swift; sourceTree = "<group>"; };
 		E4A1FFC62B6462EE00526B23 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -92,6 +94,7 @@
 		E4A1FFB82B6462EE00526B23 = {
 			isa = PBXGroup;
 			children = (
+				E46924D52B670B6B00B735A2 /* Readme.md */,
 				E4A1FFC32B6462EE00526B23 /* Notes3 */,
 				E4A1FFD42B6462EF00526B23 /* Notes3Tests */,
 				E4A1FFDE2B6462EF00526B23 /* Notes3UITests */,
@@ -268,6 +271,7 @@
 			files = (
 				E4A1FFCC2B6462EF00526B23 /* Preview Assets.xcassets in Resources */,
 				E4A1FFC92B6462EF00526B23 /* Assets.xcassets in Resources */,
+				E46924D62B670B6B00B735A2 /* Readme.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
