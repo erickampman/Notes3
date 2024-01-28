@@ -12,6 +12,10 @@ struct ThreeColumnContentView: View {
 	@Environment(NavigationContext.self) private var navigationContext
 	@State var columnVisibility: NavigationSplitViewVisibility = .all
 	@State var prevTopicTitle: String?
+	@State private var noteSortOrder = [
+		SortDescriptor(\Note.title),
+		SortDescriptor(\Note.modificationDate),
+	]
 
     var body: some View {
 		NavigationSplitView(columnVisibility: $columnVisibility) {

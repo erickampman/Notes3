@@ -8,10 +8,19 @@
 import SwiftUI
 import SwiftData
 
+enum SortBy {
+	case title
+	case date
+}
+
 struct NoteListView: View {
 	@Environment(NavigationContext.self) private var navigationContext
 	@Environment(\.modelContext) var modelContext
-	
+	@State var showAddNote = false
+
+	@State private var noteSortOrder = SortBy.title
+	@State private var sortedNotes = [Note]()
+
 	var topicTitle: String
 
 	@Query(sort: \Note.title) private var notes: [Note]
@@ -21,7 +30,7 @@ struct NoteListView: View {
 		let predicate = #Predicate<Note> { note in
 			note.topic.title == topicTitle
 		}
-		_notes = Query(filter: predicate, sort: \Note.title)
+		_notes = Query(filter: predicate, sort: \.title)
 	}
 
 	var body: some View {
@@ -30,8 +39,9 @@ struct NoteListView: View {
 			if notes.isEmpty {
 				Text("Add Notes")
 			} else {
+				updateSortInfo()
 				List(selection: $navigationContext.selectedNote) {
-					ForEach(notes) { note in
+					ForEach(sortedNotes) { note in
 						NavigationLink(note.title, value: note)
 //						NavigationLink(destination: NoteView(note: note)) {
 //							Text(note.title)
@@ -40,7 +50,43 @@ struct NoteListView: View {
 				}
 			}
 		}
+		.sheet(isPresented: $showAddNote, content: {
+			AddNoteView()
+				.presentationDetents([.medium])
+		})
+		.toolbar {
+			ToolbarItem(placement: .principal) {
+				Button(action: {
+					showAddNote.toggle()
+				}, label: {
+					Text("New Note")
+				})
+			}
+			ToolbarItem {
+				Picker("Sort Notes", selection: $noteSortOrder) {
+					Text("Title")
+						.tag(SortBy.title)
+					Text("Date")
+						.tag(SortBy.date)
+				}
+			}
+		}
     }
+	
+	private func updateSortInfo() -> some View {
+		DispatchQueue.main.async {
+			sortedNotes = self.notes.sorted { a, b in
+				switch (self.noteSortOrder) {
+				case .title:
+					a.title < b.title
+				case .date:
+					a.modificationDate > b.modificationDate
+				}
+			}
+		}
+		return EmptyView()
+	}
+
 }
 
 #Preview {

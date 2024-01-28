@@ -13,7 +13,6 @@ struct TopicListView: View {
 	@Environment(\.modelContext) private var modelContext
 	@Query(sort: \Topic.title) private var topics: [Topic]
 	@State var showAddTopic = false
-	@State var showAddNote = false
 
     var body: some View {
 		@Bindable var navigationContext = navigationContext
@@ -33,19 +32,6 @@ struct TopicListView: View {
 					}
 				}, label: {
 					Image(systemName: "minus")
-				})
-			}
-		}
-		.sheet(isPresented: $showAddNote, content: {
-			AddNoteView()
-				.presentationDetents([.medium])
-		})
-		.toolbar {
-			ToolbarItem(placement: .principal) {
-				Button(action: {
-					showAddNote.toggle()
-				}, label: {
-					Text("New Note")
 				})
 			}
 		}
